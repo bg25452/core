@@ -1674,7 +1674,7 @@ bool EscherPropertyContainer::CreateGraphicProperties(const uno::Reference<beans
 
                 if(bMirrored)
                 {
-                    pGraphicAttr->SetMirrorFlags(BmpMirrorFlags::Horizontal);
+                    pGraphicAttr->SetMirrorFlags(basegfx::MirrorDirectionFlags::Horizontal);
                 }
 
                 if(nTransparency)
