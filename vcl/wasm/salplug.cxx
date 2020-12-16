@@ -17,37 +17,36 @@
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  */
 
-#ifndef INCLUDED_SAL_ALLOCA_H
-#define INCLUDED_SAL_ALLOCA_H
+#include "saldatabasic.hxx"
+#include "printerinfomanager.hxx"
 
-#if defined(__sun) || defined(LINUX) || defined(AIX) || defined(ANDROID) || defined(HAIKU)         \
-    || defined(MACOSX) || defined(IOS) || defined(EMSCRIPTEN)
+extern "C" SalInstance* create_SalInstance();
 
-#ifndef INCLUDED_ALLOCA_H
-#include <alloca.h>
-#define INCLUDED_ALLOCA_H
-#endif
+void SalAbort(const OUString& /* rErrorText */, bool /* bDumpCore */)
+{
+    //    NSLog(@"SalAbort: %s", OUStringToOString(rErrorText, osl_getThreadTextEncoding()).getStr() );
+}
 
-#elif defined(FREEBSD) || defined(NETBSD) || defined(OPENBSD) || defined(DRAGONFLY)
+const OUString& SalGetDesktopEnvironment()
+{
+    static OUString aEnv("wasm");
+    return aEnv;
+}
 
-#ifndef INCLUDED_STDLIB_H
-#include <stdlib.h>
-#define INCLUDED_STDLIB_H
-#endif
+SalInstance* CreateSalInstance() { return create_SalInstance(); }
 
-#elif defined(_WIN32)
+void DestroySalInstance(SalInstance* pInst)
+{
+    pInst->ReleaseYieldMutexAll();
+    delete pInst;
+}
 
-#ifndef INCLUDED_MALLOC_H
-#include <malloc.h>
-#define INCLUDED_MALLOC_H
-#endif
+SalData::SalData()
+    : m_pInstance(nullptr)
+    , m_pPIManager(nullptr)
+{
+}
 
-#else
-
-#error "unknown platform: please check for alloca"
-
-#endif
-
-#endif /* INCLUDED_SAL_ALLOCA_H */
+SalData::~SalData() COVERITY_NOEXCEPT_FALSE { psp::PrinterInfoManager::release(); }
 
 /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
