@@ -2149,6 +2149,8 @@ std::size_t write_uInt16_lenPrefixed_uInt8s_FromOString(SvStream& rStrm,
     return nWritten;
 }
 
+SvStreamEOFException::SvStreamEOFException() : std::exception() {}
+
 const char * SvStreamEOFException::what() const throw()
 {
     return "SvStreamEOFException";

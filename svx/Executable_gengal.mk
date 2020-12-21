@@ -29,6 +29,8 @@ $(eval $(call gb_Executable_use_external,gengal,boost_headers))
 
 $(eval $(call gb_Executable_use_sdk_api,gengal))
 
+$(eval $(call gb_Executable_use_package,gengal,svx_gengal))
+
 $(eval $(call gb_Executable_use_libraries,gengal,\
     basegfx \
     sal \

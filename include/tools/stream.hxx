@@ -676,6 +676,7 @@ public:
 class TOOLS_DLLPUBLIC SvStreamEOFException : public std::exception
 {
 public:
+    SvStreamEOFException();
     virtual const char * what() const throw() override;
 };
 

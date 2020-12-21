@@ -106,7 +106,9 @@ endif
 ifeq ($(DISABLE_DYNLOADING),TRUE)
 gb_CFLAGS_COMMON += -ffunction-sections -fdata-sections
 gb_CXXFLAGS_COMMON += -ffunction-sections -fdata-sections
+ifneq ($(OS),EMSCRIPTEN)
 gb_LinkTarget_LDFLAGS += -Wl,--gc-sections
+endif
 endif
 
 ifeq ($(COM_IS_CLANG),TRUE)
