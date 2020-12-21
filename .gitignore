@@ -179,3 +179,8 @@ LibreOffice.VC.VC.opendb
 
 # vim-ide-integration
 /compile_commands.json
+
+# Some emscripten configure artifacts
+/a.out
+/a.out.js
+/a.out.wasm

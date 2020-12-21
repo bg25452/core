@@ -39,7 +39,7 @@ ifeq ($(SYSTEM_ZLIB),)
 postgresql_LDFLAGS += $(ZLIB_LIBS)
 endif
 
-ifeq ($(DISABLE_OPENSSL),)
+ifeq ($(ENABLE_OPENSSL),TRUE)
 ifeq ($(SYSTEM_OPENSSL),)
 postgresql_CPPFLAGS += -I$(call gb_UnpackedTarball_get_dir,openssl)/include
 postgresql_LDFLAGS  += -L$(call gb_UnpackedTarball_get_dir,openssl)/ $(if $(filter $(OS),LINUX),-pthread)
@@ -64,7 +64,7 @@ $(call gb_ExternalProject_get_state_target,postgresql,build) :
 		./configure \
 			--without-readline --disable-shared --with-ldap \
 			$(if $(CROSS_COMPILING),--build=$(BUILD_PLATFORM) --host=$(HOST_PLATFORM)) \
-			$(if $(DISABLE_OPENSSL),,--with-openssl \
+			$(if $(ENABLE_OPENSSL),--with-openssl \
 				$(if $(WITH_KRB5), --with-krb5) \
 				$(if $(WITH_GSSAPI),--with-gssapi)) \
 				$(if $(ENABLE_LDAP),,--with-ldap=no) \
