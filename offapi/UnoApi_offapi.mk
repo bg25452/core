@@ -446,6 +446,7 @@ $(eval $(call gb_UnoApi_add_idlfiles_nohdl,offapi,com/sun/star/ui/test,\
     UITest \
 ))
 $(eval $(call gb_UnoApi_add_idlfiles_nohdl,offapi,com/sun/star/util,\
+	BinaryDataContainer \
 	JobManager \
 	NumberFormatter \
 	NumberFormatsSupplier \
@@ -4143,6 +4144,7 @@ $(eval $(call gb_UnoApi_add_idlfiles,offapi,com/sun/star/util,\
 	VetoException \
 	XAccounting \
 	XAtomServer \
+	XBinaryDataContainer \
 	XBroadcaster \
 	XCancellable \
 	XChainable \

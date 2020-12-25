@@ -35,4 +35,8 @@
     constructor="dtrans_CMimeContentTypeFactory_get_implementation">
     <service name="com.sun.star.datatransfer.MimeContentTypeFactory"/>
   </implementation>
+  <implementation name="com.sun.star.util.BinaryDataContainer"
+    constructor="com_sun_star_comp_util_BinaryDataContainer_get_implementation">
+    <service name="com.sun.star.util.BinaryDataContainer"/>
+  </implementation>
 </component>
