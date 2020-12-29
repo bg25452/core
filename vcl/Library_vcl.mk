@@ -424,6 +424,7 @@ $(eval $(call gb_Library_add_exception_objects,vcl,\
     vcl/source/components/dtranscomp \
     vcl/source/components/factory \
     vcl/source/components/fontident \
+    vcl/source/filter/etiff/etiff \
     vcl/source/filter/FilterConfigCache \
     vcl/source/filter/FilterConfigItem \
     vcl/source/filter/graphicfilter \
@@ -435,6 +436,9 @@ $(eval $(call gb_Library_add_exception_objects,vcl,\
     vcl/source/filter/igif/gifread \
     vcl/source/filter/ipdf/pdfread \
     vcl/source/filter/ipdf/pdfdocument \
+    vcl/source/filter/itiff/ccidecom \
+    vcl/source/filter/itiff/itiff \
+    vcl/source/filter/itiff/lzwdecom \
     vcl/source/filter/ixbm/xbmread \
     vcl/source/filter/ixpm/xpmread \
     vcl/source/filter/jpeg/Exif \
